@@ -34,7 +34,7 @@ class MainActivity : Activity() {
     override fun onBackPressed() {
         if (::webView.isInitialized) {
             webView.evaluateJavascript(
-                "(function(){var active=document.querySelector('.screen.active');if(active&&active.id!=='home'){go('home');return true;}return false;})()"
+                "(function(){var cinema=document.getElementById('cinema');if(cinema&&cinema.classList.contains('show')){skipCutscene();return true;}var active=document.querySelector('.screen.active');if(active&&active.id!=='home'){go('home');return true;}return false;})()"
             ) { handled ->
                 if (handled != "true") super.onBackPressed()
             }
