@@ -32,8 +32,12 @@ class MainActivity : Activity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        if (::webView.isInitialized && webView.canGoBack()) {
-            webView.goBack()
+        if (::webView.isInitialized) {
+            webView.evaluateJavascript(
+                "(function(){var active=document.querySelector('.screen.active');if(active&&active.id!=='home'){go('home');return true;}return false;})()"
+            ) { handled ->
+                if (handled != "true") super.onBackPressed()
+            }
         } else {
             super.onBackPressed()
         }
