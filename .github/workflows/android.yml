@@ -49,7 +49,7 @@ jobs:
           for (const token of ['function statistics()', 'function markReviewed(', 'function saveTimer()', 'function restoreTimer()', 'function applyTheme(', 'function setSoundVolume(', 'q.needsReview=true', 'investigatorSoundEnabled']) {
             if (!html.includes(token)) throw new Error('Missing feature: ' + token);
           }
-          const names = [...html.matchAll(/function\\s+([A-Za-z_$][\\w$]*)\\s*\\(/g)].map(x => x[1]);
+          const names = [...html.matchAll(/function\s+([A-Za-z_$][\w$]*)\s*\(/g)].map(x => x[1]);
           const duplicates = names.filter((name, i) => names.indexOf(name) !== i);
           if (duplicates.length) throw new Error('Duplicate function declarations: ' + [...new Set(duplicates)].join(', '));
           if (!manifest.includes('android.permission.INTERNET')) throw new Error('HTTPS font permission missing');
