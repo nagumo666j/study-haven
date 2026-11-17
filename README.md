@@ -16,7 +16,7 @@ An Arabic-first, offline Android study companion presented as a retro 16-bit det
 - Starter cases for Mathematics, Physics, Chemistry, Arabic, and English
 - User-created cases and lessons, locally saved notes, evidence collection, quiz prompts, progress, and XP
 - Local browser storage; no account or advertising SDK is included
-- Generated, low-volume retro Web Audio effects for taps, clues, answers, cutscenes, and focus completion, with mute and volume controls
+- Generated, low-volume retro Web Audio effects for taps, clues, answers, cutscenes, and focus completion, with mute, volume controls, and an in-app sound preview
 - Three saved office color themes
 - Study statistics, focus-session totals, and a mistake-review notebook
 - Rename lessons and delete lessons or individual review questions
