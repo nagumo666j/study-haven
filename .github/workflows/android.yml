@@ -24,6 +24,18 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
+      - name: Validate embedded JavaScript
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path("app/src/main/assets/index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script>(.*?)</script>", html, re.S)
+          if len(scripts) != 1:
+              raise SystemExit(f"Expected one app script, found {len(scripts)}")
+          Path("/tmp/investigator.js").write_text(scripts[0], encoding="utf-8")
+          PY
+          node --check /tmp/investigator.js
       - name: Build debug APK
         run: gradle assembleDebug
       - name: Upload APK
